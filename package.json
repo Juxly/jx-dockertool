@@ -1,0 +1,17 @@
+{
+  "name": "jx-dockertool",
+  "version": "1.0.0",
+  "description": "This is a tool that asists in managing docker containers for juxly apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zach Baker",
+  "license": "ISC",
+  "bin": {
+    "jx-dockertool": "./bin/jx-dockertool.js"
+  },
+  "dependencies": {
+    "lodash": "^4.17.10"
+  }
+}
