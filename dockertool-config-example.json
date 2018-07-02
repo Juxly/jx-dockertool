@@ -1,0 +1,34 @@
+[
+  {
+  "profileName": "dev",
+  "image": {
+      "mode": "build",
+      "name": "ibh-app-dev",
+      "dockerfile": "docker/dev-node.dockerfile",
+      "args": [],
+      "optionss": []
+    },
+    "container": {
+      "name": "ibh-app-dev",
+      "port": 8000,
+      "args": [],
+      "options": ["-v $(pwd):/app"]
+    }
+  },
+  {
+    "profileName": "prod",
+    "image": {
+        "mode": "build",
+        "name": "ibh-app",
+        "dockerfile": "docker/prod-node.dockerfile",
+        "args": [],
+        "optionss": []
+      },
+      "container": {
+        "name": "ibh-app",
+        "port": 8000,
+        "args": [],
+        "options": []
+      }
+    }
+]

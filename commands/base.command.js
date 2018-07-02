@@ -11,8 +11,18 @@ class BaseCommand {
     return this
   }
 
+  addArguments (args) {
+    this.arguments = this.arguments.concat(args)
+    return this
+  }
+
   addOption (option) {
     this.options.push(option)
+    return this
+  }
+
+  addOptions (options) {
+    this.options = this.options.concat(options)
     return this
   }
 

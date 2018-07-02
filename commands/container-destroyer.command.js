@@ -2,7 +2,7 @@ const BaseCommand = require('./base.command')
 
 class ContainerDestroyer extends BaseCommand {
   constructor (containerName) {
-    super('docker conteiner rm')
+    super('docker container rm')
     this.containerName = containerName
     this.options.push('-f')
   }

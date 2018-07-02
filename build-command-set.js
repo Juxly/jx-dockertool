@@ -7,12 +7,20 @@ const ContainerDestroyer = require('./commands/container-destroyer.command')
 function buildCommandSet (path, config) {
   var image = config.image
   var container = config.container
-  return {
-  destroyContainer: (new ContainerDestroyer(container.name)).build(),
-  destroyImage: (new ImageDestroyer(image.name)).build(),
-  buildImage: (new ImageBuilder(path, image.dockerfile, image.name)).build(),
-  buildConteiner: (new ContainerCreator(image.name, container.port, container.name)).build()
-  }
+
+  var containerDestroyer = new ContainerDestroyer(container.name)
+
+  var imageDestroyer = new ImageDestroyer(image.name)
+
+  var imageBuilder = new ImageBuilder(path, image.dockerfile, image.name)
+    .addArguments(image.args)
+    .addOptions(image.options)
+
+  var containerCreator = (new ContainerCreator(container.name, container.port, image.name))
+    .addArguments(container.args)
+    .addOptions(container.options)
+
+  return [containerDestroyer.build(), imageDestroyer.build(), imageBuilder.build(), containerCreator.build()]
 }
 
 module.exports = buildCommandSet

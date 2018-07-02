@@ -16,7 +16,7 @@ program
 function main(path, profile) {
   console.log(`path: ${path}`)
   console.log(`profile: ${profile}`)
-  console.log(`rebuilding: ${program.rebuild}`)
+
   try {
     var config = getConfig(path, profile)
   }
@@ -24,8 +24,9 @@ function main(path, profile) {
     console.error(err)
     return
   }
-  console.log('config:', config)
-  console.log(buildCommandSet(path, config))
+  console.log('config:\n', config)
+  
+  console.log('commands:\n', buildCommandSet(path, config))
 }
 
 program.parse(process.argv)
