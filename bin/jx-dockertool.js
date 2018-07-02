@@ -1,7 +1,31 @@
 #!/usr/bin/env node
-// const runCMD = require('../run-command')
-const ImageBuilder = require('../commands/image-builder.command')
+const runCMD = require('../run-command')
+const getConfig = require('../get-config')
+const buildCommandSet = require('../build-command-set')
 
-var cmd = new ImageBuilder('.', 'docker/dev-node.dockerfile', 'ibh-app')
+var program = require('commander')
 
-console.log(cmd.build())
+program
+  .version('v0.1.0')
+  .arguments('<ProjectPath> [BuildProfileName]')
+  .action((path, profile) => {
+    main(path, profile)
+  })
+  //.option('-R, --no-rebuild', ' do not remove existing containers before building, just builds containers')
+
+function main(path, profile) {
+  console.log(`path: ${path}`)
+  console.log(`profile: ${profile}`)
+  console.log(`rebuilding: ${program.rebuild}`)
+  try {
+    var config = getConfig(path, profile)
+  }
+  catch (err) {
+    console.error(err)
+    return
+  }
+  console.log('config:', config)
+  console.log(buildCommandSet(path, config))
+}
+
+program.parse(process.argv)

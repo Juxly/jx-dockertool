@@ -8,8 +8,16 @@ class ImageBuilder extends BaseCommand {
     this.name = name
   }
 
+  formatDockerfile() {
+    return `-f ${this.dockerfile}`
+  }
+
+  formatName() {
+    return `-t ${this.name}`
+  }
+
   build () {
-    return [this.cmd, this.path, this.arguments.join(' '), ('-f ' + this.dockerfile), ('-t ' + this.name), this.options.join(' ')].join(' ')
+    return [this.cmd, this.path, this.options.join(' '), this.formatDockerfile(), this.formatName(), this.arguments.join(' ')].join(' ')
   }
 }
 
