@@ -1,7 +1,7 @@
 const spawn = require('child_process').spawnSync
 
-function runCMD (cmd) {
-  spawn(cmd, [], {
+function runCMD (path ,cmd) {
+  spawn(`cd ${path} && ${cmd}`, [], {
     stdio: 'inherit',
     shell: true
   })

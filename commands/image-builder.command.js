@@ -9,7 +9,7 @@ class ImageBuilder extends BaseCommand {
   }
 
   formatDockerfile() {
-    return `-f ${this.dockerfile}`
+    return `-f ${this.path}/${this.dockerfile}`
   }
 
   formatName() {

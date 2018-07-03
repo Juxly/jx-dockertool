@@ -7,7 +7,7 @@ class ContainerDestroyer extends BaseCommand {
   }
 
   formatImageFinder () {
-    return `$(docker image ls name=${this.imageName} -q)`
+    return `$(docker image ls ${this.imageName} -q)`
   }
 
   build () {

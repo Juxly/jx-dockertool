@@ -8,7 +8,7 @@ class ContainerDestroyer extends BaseCommand {
   }
 
   formatContainerFinder () {
-    return `$(docker ps -a -f name=${this.containerName} -q)`
+    return `$(docker ps -a -f "name=${this.containerName}" -q)`
   }
 
   build () {
